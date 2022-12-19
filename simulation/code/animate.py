@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 import cartopy.crs as ccrs
 
+
 def update(k, fig_title):
     plt.cla()
     ax = plt.axes(projection=ccrs.Orthographic(central_longitude=(-k),central_latitude=0))
@@ -13,6 +14,7 @@ def update(k, fig_title):
 
 fig = plt.figure(figsize=(6,2))
 x = np.arange(0, 10, 0.1)
+
 
 def update(k, fig_title, Amp):
     plt.cla()
@@ -24,5 +26,5 @@ def update(k, fig_title, Amp):
 
 
 ani = animation.FuncAnimation(fig, update, \
-    fargs = ('Animation, ', 1.8), \
+        fargs = ('Animation, ', 1.8), \
         interval=100, frames=32, repeat=False)
