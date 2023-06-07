@@ -3,11 +3,11 @@ import PyPDF2 as pdf
 
 d = pd.read_csv('./data/test.csv', header=None)
 
-writer = pdf.PdfFileWriter()
+writer = pdf.PdfWriter()
 files = glob.glob('./data/*.pdf')
 
 for i in range(len(files)):
-    reader = pdf.PdfFileReader(files[i])
+    reader = pdf.PdfReader(files[i])
 
     for l in range(0, 99):
         if l in d.values:
