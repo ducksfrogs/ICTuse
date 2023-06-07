@@ -1,0 +1,22 @@
+import glob
+import PyPDF2 as pdf
+import pandas as pd
+
+csvName = input('Enter csv Name')
+
+d = pd.read_csv('./data/' + csvName, header=None)
+
+writer = pdf.PdfFileWriter()
+files = glob.glob('./data/*.pdf')
+
+for i in range(len(files)):
+    reader = pdf.PdfFileReader(files[i])
+
+    for l in range(0, reader.numPages):
+        if l in d.values:
+            page = reader.pages[l]
+            writer.addPage(page)
+        
+with open("comp.pdf", 'wb') as f:
+    writer.write(f)
+    
