@@ -4,16 +4,16 @@ import pandas as pd
 
 d = pd.read_csv('./data/test.csv', header=None)
 
-writer = pdf.PdfFileWriter()
+writer = pdf.PdfWriter()
 files = glob.glob('./data/*.pdf')
 
 for i in range(len(files)):
-    reader = pdf.PdfFileReader(files[i])
+    reader = pdf.PdfReader(files[i])
 
-    for l in range(0, reader.numPages):
+    for l in range(0, len(reader.pages)):
         if l in d.values:
             page = reader.pages[l]
-            writer.addPage(page)
+            writer.add_page(page)
         
 with open("comp.pdf", 'wb') as f:
     writer.write(f)
